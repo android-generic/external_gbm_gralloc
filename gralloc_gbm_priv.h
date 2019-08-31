@@ -51,6 +51,9 @@ int gralloc_gbm_bo_lock_ycbcr(buffer_handle_t handle, int usage,
 struct gbm_device *gbm_dev_create(bool master);
 void gbm_dev_destroy(struct gbm_device *gbm);
 
+int gralloc_gbm_set_master(struct gbm_device *gbm);
+void gralloc_gbm_drop_master(struct gbm_device *gbm);
+
 #ifdef __cplusplus
 }
 #endif
