@@ -54,6 +54,9 @@ void gbm_dev_destroy(struct gbm_device *gbm);
 bool is_kms_dev(int fd);
 int open_first_kms_dev(const char *pattern);
 
+int gralloc_gbm_set_master(struct gbm_device *gbm);
+void gralloc_gbm_drop_master(struct gbm_device *gbm);
+
 #ifdef __cplusplus
 }
 #endif
