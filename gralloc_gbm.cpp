@@ -289,8 +289,8 @@ static int gbm_map(buffer_handle_t handle, int x, int y, int w, int h,
 	if (enable_write)
 		flags |= GBM_BO_TRANSFER_WRITE;
 
-	*addr = gbm_bo_map(bo, x, y, w, h, flags, &stride, &bo_data->map_data);
-	ALOGV("mapped bo %p at %p", bo, *addr);
+	*addr = gbm_bo_map(bo, 0, 0, x + w, y + h, flags, &stride, &bo_data->map_data);
+	ALOGV("mapped bo %p (%d, %d)-(%d, %d) at %p", bo, x, y, w, h, *addr);
 	if (*addr == NULL)
 		return -ENOMEM;
 
