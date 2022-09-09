@@ -262,6 +262,8 @@ struct gbm_bo *gralloc_gbm_bo_from_handle(buffer_handle_t handle)
 	return gbm_bo_handle_map[handle];
 }
 
+#define DIV_ROUND_UP(n, d) (((n) + (d)-1) / (d))
+
 static int gbm_map(buffer_handle_t handle, int enable_write, void **addr)
 {
 	int err = 0;
@@ -276,7 +278,7 @@ static int gbm_map(buffer_handle_t handle, int enable_write, void **addr)
 	if (enable_write)
 		flags |= GBM_BO_TRANSFER_WRITE;
 
-	*addr = gbm_bo_map(bo, 0, 0, gbm_bo_get_width(bo), gbm_bo_get_height(bo),
+	*addr = gbm_bo_map(bo, 0, 0, DIV_ROUND_UP(gbm_bo_get_stride(bo), gbm_bo_get_bpp(bo) / 8), gbm_bo_get_height(bo),
 	                   flags, &stride, &bo_data->map_data);
 	ALOGV("mapped bo %p at %p", bo, *addr);
 	if (*addr == NULL)
