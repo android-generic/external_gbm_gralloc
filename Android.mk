@@ -44,4 +44,54 @@ LOCAL_MODULE_RELATIVE_PATH := hw
 LOCAL_PROPRIETARY_MODULE := true
 
 include $(BUILD_SHARED_LIBRARY)
+
+include $(CLEAR_VARS)
+
+LOCAL_SRC_FILES := \
+	gralloc_gbm_nohack.cpp \
+	gralloc.cpp
+
+LOCAL_SHARED_LIBRARIES := \
+	libdrm \
+	libgbm_mesa \
+	liblog \
+	libcutils \
+	libhardware \
+
+LOCAL_STATIC_LIBRARIES := libdrm_framebuffer
+
+LOCAL_EXPORT_C_INCLUDE_DIRS := \
+	$(LOCAL_PATH)
+
+LOCAL_MODULE := gralloc.gbm_nohack
+LOCAL_MODULE_TAGS := optional
+LOCAL_MODULE_RELATIVE_PATH := hw
+LOCAL_PROPRIETARY_MODULE := true
+
+include $(BUILD_SHARED_LIBRARY)
+
+include $(CLEAR_VARS)
+
+LOCAL_SRC_FILES := \
+	gralloc_gbm_noscanout.cpp \
+	gralloc.cpp
+
+LOCAL_SHARED_LIBRARIES := \
+	libdrm \
+	libgbm_mesa \
+	liblog \
+	libcutils \
+	libhardware \
+
+LOCAL_STATIC_LIBRARIES := libdrm_framebuffer
+
+LOCAL_EXPORT_C_INCLUDE_DIRS := \
+	$(LOCAL_PATH)
+
+LOCAL_MODULE := gralloc.gbm_noscanout
+LOCAL_MODULE_TAGS := optional
+LOCAL_MODULE_RELATIVE_PATH := hw
+LOCAL_PROPRIETARY_MODULE := true
+
+include $(BUILD_SHARED_LIBRARY)
 include $(LOCAL_PATH)/tests/Android.mk
