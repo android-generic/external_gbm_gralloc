@@ -455,9 +455,11 @@ int gralloc_gbm_bo_lock(buffer_handle_t handle,
 				GRALLOC_USAGE_SW_READ_OFTEN |
 				GRALLOC_USAGE_HW_FB |
 				GRALLOC_USAGE_HW_TEXTURE |
-				GRALLOC_USAGE_HW_VIDEO_ENCODER))) {
+				GRALLOC_USAGE_HW_VIDEO_ENCODER | 
+				GRALLOC_USAGE_HW_CAMERA_WRITE |
+				GRALLOC_USAGE_HW_CAMERA_READ))) {
 
-			ALOGE("bo.usage:x%X/usage:x%X is not GRALLOC_USAGE_HW_{FB,TEXTURE,VIDEO_ENCODER}",
+			ALOGE("bo.usage:x%X/usage:x%X is not GRALLOC_USAGE_HW_{FB,TEXTURE,VIDEO_ENCODER,CAMERA_WRITE,CAMERA_READ}",
 				gbm_handle->usage, usage);
 			return -EINVAL;
 		}
